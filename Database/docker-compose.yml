@@ -5,7 +5,6 @@ services:
     container_name: vol_med_mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: root
     ports:
     - "9080:3306"
     volumes:
