@@ -37,7 +37,7 @@ public class MedicosController {
     }
 
     @GetMapping("/findMedicos")
-    public ResponseEntity<Page<MedicoListagemDTO>> listarMedicos(@PageableDefault(size = 10) Pageable pageable) {
+    public ResponseEntity<Page<MedicoListagemDTO>> listarMedicos(@PageableDefault(size = 10,sort = {"nome"}) Pageable pageable) {
         Page<MedicoListagemDTO> todosOsMedicos = medicoRepository.findAll(pageable).map(MedicoListagemDTO::new);
         return ResponseEntity.status(HttpStatus.OK).body(todosOsMedicos);
     }
