@@ -44,6 +44,7 @@ public class MedicosController {
     }
 
     @PutMapping("/atualizaMedico")
+    @Transactional
     public ResponseEntity<AtualizaMedicoDTO> atualizaMedico(@RequestBody @Valid AtualizaMedicoDTO medicoDTO) {
         medicoDTO = medicosService.atualizaMedicoDTO(medicoDTO);
         return ResponseEntity.status(HttpStatus.OK).body(medicoDTO);
