@@ -44,5 +44,15 @@ public class MedicosService {
         return medicoDTO;
     }
 
+    public void desativaMedico(Long id){
+        var medico = medicoRepository.findById(id).get();
+        if(medico != null){
+            medico.excluir();
+            medicoRepository.save(medico);
+        }
+
+
+    }
+
 
 }

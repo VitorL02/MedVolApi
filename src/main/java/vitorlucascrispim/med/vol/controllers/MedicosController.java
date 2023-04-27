@@ -39,7 +39,7 @@ public class MedicosController {
 
     @GetMapping("/findMedicos")
     public ResponseEntity<Page<MedicoListagemDTO>> listarMedicos(@PageableDefault(size = 10,sort = {"nome"}) Pageable pageable) {
-        Page<MedicoListagemDTO> todosOsMedicos = medicoRepository.findAll(pageable).map(MedicoListagemDTO::new);
+        Page<MedicoListagemDTO> todosOsMedicos = medicoRepository.findAllByAtivoTrue(pageable).map(MedicoListagemDTO::new);
         return ResponseEntity.status(HttpStatus.OK).body(todosOsMedicos);
     }
 
@@ -50,5 +50,12 @@ public class MedicosController {
         return ResponseEntity.status(HttpStatus.OK).body(medicoDTO);
     }
 
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<String>deletaMedico(@PathVariable Long id){
+        medicosService.desativaMedico(id);
+        return ResponseEntity.status(HttpStatus.OK).body("Medico Inativado com sucesso");
+    };
 
 }
