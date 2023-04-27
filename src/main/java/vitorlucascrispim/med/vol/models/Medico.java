@@ -3,6 +3,7 @@ package vitorlucascrispim.med.vol.models;
 import jakarta.persistence.*;
 import lombok.*;
 import vitorlucascrispim.med.vol.dtos.Especialidade;
+import vitorlucascrispim.med.vol.dtos.MedicoDTO;
 
 
 @Table(name="tb_medicos")
@@ -25,4 +26,13 @@ public class Medico {
 
     @Embedded
     private Endereco endereco;
+
+
+    public Medico(MedicoDTO medicoDTO) {
+        this.nome = medicoDTO.nome();
+        this.email = medicoDTO.email();
+        this.crm = medicoDTO.crm();
+        this.especialidade = medicoDTO.especialidade();
+        this.endereco = new Endereco(medicoDTO);
+    }
 }

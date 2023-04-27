@@ -5,6 +5,7 @@ import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import vitorlucascrispim.med.vol.dtos.MedicoDTO;
 
 @Embeddable
 @Getter
@@ -19,4 +20,14 @@ public class Endereco {
     private String complemento;
     private String numero;
 
+
+    public Endereco(MedicoDTO medicoDTO) {
+        this.logradouro = medicoDTO.endereco().logradouro();
+        this.bairro = medicoDTO.endereco().bairro();
+        this.cep = medicoDTO.endereco().cep();
+        this.cidade = medicoDTO.endereco().cidade();
+        this.uf = medicoDTO.endereco().uf();
+        this.complemento = medicoDTO.endereco().complemento();
+        this.numero = medicoDTO.endereco().numero();
+    }
 }
