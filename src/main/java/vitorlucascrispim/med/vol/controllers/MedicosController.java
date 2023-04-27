@@ -10,6 +10,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import vitorlucascrispim.med.vol.dtos.AtualizaMedicoDTO;
 import vitorlucascrispim.med.vol.dtos.MedicoDTO;
 import vitorlucascrispim.med.vol.dtos.MedicoListagemDTO;
 import vitorlucascrispim.med.vol.models.Medico;
@@ -40,6 +41,12 @@ public class MedicosController {
     public ResponseEntity<Page<MedicoListagemDTO>> listarMedicos(@PageableDefault(size = 10,sort = {"nome"}) Pageable pageable) {
         Page<MedicoListagemDTO> todosOsMedicos = medicoRepository.findAll(pageable).map(MedicoListagemDTO::new);
         return ResponseEntity.status(HttpStatus.OK).body(todosOsMedicos);
+    }
+
+    @PutMapping("/atualizaMedico")
+    public ResponseEntity<AtualizaMedicoDTO> atualizaMedico(@RequestBody @Valid AtualizaMedicoDTO medicoDTO) {
+        medicoDTO = medicosService.atualizaMedicoDTO(medicoDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(medicoDTO);
     }
 
 
