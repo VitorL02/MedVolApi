@@ -2,10 +2,15 @@ package vitorlucascrispim.med.vol.services;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import vitorlucascrispim.med.vol.dtos.MedicoDTO;
+import vitorlucascrispim.med.vol.dtos.MedicoListagemDTO;
 import vitorlucascrispim.med.vol.models.Medico;
 import vitorlucascrispim.med.vol.repositories.MedicoRepository;
+
+import java.util.List;
 
 @Service
 public class MedicosService {
@@ -23,4 +28,7 @@ public class MedicosService {
             throw new RuntimeException("Erro ao salvar cadastro do medico");
         }
     }
+
+
+
 }
