@@ -57,5 +57,17 @@ public class MedicosService {
 
     }
 
+    public MedicoEspecificoDTO detalhaMedicoEspecifico(Long id){
+        MedicoEspecificoDTO medicoEspecificoDTO = null;
+        var medico = medicoRepository.findById(id).get();
+        if(medico != null){
+            medicoEspecificoDTO = new MedicoEspecificoDTO(medico);
+        }else{
+            throw new RuntimeException("Erro ao buscar medico especifico");
+        }
+
+        return medicoEspecificoDTO;
+    }
+
 
 }
