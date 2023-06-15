@@ -1,19 +1,12 @@
 package vitorlucascrispim.med.vol.services;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import vitorlucascrispim.med.vol.dtos.AtualizaMedicoDTO;
-import vitorlucascrispim.med.vol.dtos.MedicoDTO;
-import vitorlucascrispim.med.vol.dtos.MedicoEspecificoDTO;
-import vitorlucascrispim.med.vol.dtos.MedicoListagemDTO;
-import vitorlucascrispim.med.vol.models.Medico;
+import vitorlucascrispim.med.vol.dtos.medico.AtualizaMedicoDTO;
+import vitorlucascrispim.med.vol.dtos.medico.MedicoDTO;
+import vitorlucascrispim.med.vol.dtos.medico.MedicoEspecificoDTO;
+import vitorlucascrispim.med.vol.models.medico.Medico;
 import vitorlucascrispim.med.vol.repositories.MedicoRepository;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MedicosService {

@@ -1,4 +1,4 @@
-package vitorlucascrispim.med.vol.dtos;
+package vitorlucascrispim.med.vol.dtos.medico;
 
 public enum Especialidade {
     ORTOPEDIA,

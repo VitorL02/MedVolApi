@@ -1,6 +1,5 @@
-package vitorlucascrispim.med.vol.dtos;
+package vitorlucascrispim.med.vol.dtos.medico;
 
-import jakarta.persistence.Embedded;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

@@ -1,6 +1,5 @@
-package vitorlucascrispim.med.vol.dtos;
+package vitorlucascrispim.med.vol.dtos.medico;
 
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record AtualizaMedicoDTO(@NotNull Long id, String nome, String telefone, EnderecoAtualizacaoDTO enderecoDTO) {

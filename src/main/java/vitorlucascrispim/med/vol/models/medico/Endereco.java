@@ -1,13 +1,13 @@
-package vitorlucascrispim.med.vol.models;
+package vitorlucascrispim.med.vol.models.medico;
 
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import vitorlucascrispim.med.vol.dtos.AtualizaMedicoDTO;
-import vitorlucascrispim.med.vol.dtos.EnderecoAtualizacaoDTO;
-import vitorlucascrispim.med.vol.dtos.MedicoDTO;
+import vitorlucascrispim.med.vol.dtos.medico.AtualizaMedicoDTO;
+import vitorlucascrispim.med.vol.dtos.medico.EnderecoAtualizacaoDTO;
+import vitorlucascrispim.med.vol.dtos.medico.MedicoDTO;
 
 @Embeddable
 @Getter

@@ -1,10 +1,10 @@
-package vitorlucascrispim.med.vol.models;
+package vitorlucascrispim.med.vol.models.medico;
 
 import jakarta.persistence.*;
 import lombok.*;
-import vitorlucascrispim.med.vol.dtos.AtualizaMedicoDTO;
-import vitorlucascrispim.med.vol.dtos.Especialidade;
-import vitorlucascrispim.med.vol.dtos.MedicoDTO;
+import vitorlucascrispim.med.vol.dtos.medico.AtualizaMedicoDTO;
+import vitorlucascrispim.med.vol.dtos.medico.Especialidade;
+import vitorlucascrispim.med.vol.dtos.medico.MedicoDTO;
 
 
 @Table(name="tb_medicos")

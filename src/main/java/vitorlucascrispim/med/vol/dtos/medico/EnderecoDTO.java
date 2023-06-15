@@ -1,4 +1,4 @@
-package vitorlucascrispim.med.vol.dtos;
+package vitorlucascrispim.med.vol.dtos.medico;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

@@ -11,15 +11,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-import vitorlucascrispim.med.vol.dtos.AtualizaMedicoDTO;
-import vitorlucascrispim.med.vol.dtos.MedicoDTO;
-import vitorlucascrispim.med.vol.dtos.MedicoEspecificoDTO;
-import vitorlucascrispim.med.vol.dtos.MedicoListagemDTO;
-import vitorlucascrispim.med.vol.models.Medico;
+import vitorlucascrispim.med.vol.dtos.medico.AtualizaMedicoDTO;
+import vitorlucascrispim.med.vol.dtos.medico.MedicoDTO;
+import vitorlucascrispim.med.vol.dtos.medico.MedicoEspecificoDTO;
+import vitorlucascrispim.med.vol.dtos.medico.MedicoListagemDTO;
+import vitorlucascrispim.med.vol.models.medico.Medico;
 import vitorlucascrispim.med.vol.repositories.MedicoRepository;
 import vitorlucascrispim.med.vol.services.MedicosService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/medicos")
