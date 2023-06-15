@@ -10,8 +10,10 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 import vitorlucascrispim.med.vol.dtos.AtualizaMedicoDTO;
 import vitorlucascrispim.med.vol.dtos.MedicoDTO;
+import vitorlucascrispim.med.vol.dtos.MedicoEspecificoDTO;
 import vitorlucascrispim.med.vol.dtos.MedicoListagemDTO;
 import vitorlucascrispim.med.vol.models.Medico;
 import vitorlucascrispim.med.vol.repositories.MedicoRepository;
@@ -31,13 +33,15 @@ public class MedicosController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<MedicoDTO>cadastroDeMedicos(@RequestBody @Valid MedicoDTO medicoDTO){
-        medicosService.cadastraMedicos(medicoDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(medicoDTO);
+    public ResponseEntity cadastroDeMedicos(@RequestBody @Valid MedicoDTO medicoDTO, UriComponentsBuilder uriBuilder){
+        Medico medico = medicosService.cadastraMedicos(medicoDTO);
+        var uri = uriBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
+        return ResponseEntity.created(uri).body(medicoDTO);
 
     }
 
     @GetMapping("/findMedicos")
+
     public ResponseEntity<Page<MedicoListagemDTO>> listarMedicos(@PageableDefault(size = 10,sort = {"nome"}) Pageable pageable) {
         Page<MedicoListagemDTO> todosOsMedicos = medicoRepository.findAllByAtivoTrue(pageable).map(MedicoListagemDTO::new);
         return ResponseEntity.status(HttpStatus.OK).body(todosOsMedicos);
@@ -45,9 +49,9 @@ public class MedicosController {
 
     @PutMapping("/atualizaMedico")
     @Transactional
-    public ResponseEntity<AtualizaMedicoDTO> atualizaMedico(@RequestBody @Valid AtualizaMedicoDTO medicoDTO) {
-        medicoDTO = medicosService.atualizaMedicoDTO(medicoDTO);
-        return ResponseEntity.status(HttpStatus.OK).body(medicoDTO);
+    public ResponseEntity<MedicoEspecificoDTO> atualizaMedico(@RequestBody @Valid AtualizaMedicoDTO medicoDTO) {
+        MedicoEspecificoDTO medicoEspecificoDTO = medicosService.atualizaMedicoDTO(medicoDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(medicoEspecificoDTO);
     }
 
 

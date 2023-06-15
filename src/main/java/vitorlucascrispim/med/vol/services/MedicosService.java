@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import vitorlucascrispim.med.vol.dtos.AtualizaMedicoDTO;
 import vitorlucascrispim.med.vol.dtos.MedicoDTO;
+import vitorlucascrispim.med.vol.dtos.MedicoEspecificoDTO;
 import vitorlucascrispim.med.vol.dtos.MedicoListagemDTO;
 import vitorlucascrispim.med.vol.models.Medico;
 import vitorlucascrispim.med.vol.repositories.MedicoRepository;
@@ -20,7 +21,7 @@ public class MedicosService {
     @Autowired
     private MedicoRepository medicoRepository;
 
-    public void cadastraMedicos(MedicoDTO medicoDTO){
+    public Medico cadastraMedicos(MedicoDTO medicoDTO){
         Medico medico = new Medico(medicoDTO);
         try{
             if(medico != null){
@@ -29,9 +30,10 @@ public class MedicosService {
         }catch (Exception e){
             throw new RuntimeException("Erro ao salvar cadastro do medico");
         }
+        return medico;
     }
 
-    public AtualizaMedicoDTO atualizaMedicoDTO(AtualizaMedicoDTO medicoDTO){
+    public MedicoEspecificoDTO atualizaMedicoDTO(AtualizaMedicoDTO medicoDTO){
         Medico medicoAtualizado = medicoRepository.findById(medicoDTO.id()).get();
         if(medicoAtualizado != null){
             medicoAtualizado.atualizaInformacoes(medicoDTO);
@@ -41,7 +43,8 @@ public class MedicosService {
                 throw new RuntimeException("Erro ao atualizar o medico");
             }
         }
-        return medicoDTO;
+        MedicoEspecificoDTO medicoEspecificoDTO = new MedicoEspecificoDTO(medicoAtualizado);
+        return  medicoEspecificoDTO;
     }
 
     public void desativaMedico(Long id){
