@@ -60,12 +60,12 @@ public class MedicosController {
     public ResponseEntity<String>deletaMedico(@PathVariable Long id){
         medicosService.desativaMedico(id);
         return ResponseEntity.status(HttpStatus.OK).body("Medico Inativado com sucesso");
-    };
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<MedicoEspecificoDTO>detalhaMedicoEspecifico(@PathVariable Long id){
         MedicoEspecificoDTO medicoEspecificoDTO = medicosService.detalhaMedicoEspecifico(id);
         return ResponseEntity.status(HttpStatus.OK).body(medicoEspecificoDTO);
-    };
+    }
 
 }
