@@ -1,6 +1,8 @@
 package vitorlucascrispim.med.vol.controllers;
 
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +33,9 @@ public class UsuarioController {
         var authToken = new UsernamePasswordAuthenticationToken(dadosAutenticacao.login(),dadosAutenticacao.senha());
         var auth =  manager.authenticate(authToken);
         var tokenJWT = tokenService.gerarToken((Usuario) auth.getPrincipal());
+        DecodedJWT decodedJWT =  JWT.decode(tokenJWT);
 
-        return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
+        return ResponseEntity.ok(new DadosTokenJWT(decodedJWT.getToken(),decodedJWT.getExpiresAtAsInstant()));
 
     }
 

@@ -1,5 +1,7 @@
 package vitorlucascrispim.med.vol.dtos.user;
 
-public record DadosTokenJWT(String tokenJWT) {
+import java.time.Instant;
+
+public record DadosTokenJWT(String tokenJWT, Instant experiesAt) {
 }
 
