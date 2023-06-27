@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import vitorlucascrispim.med.vol.dtos.user.DadosAutenticacaoDTO;
+import vitorlucascrispim.med.vol.infra.TokenService;
+import vitorlucascrispim.med.vol.models.user.Usuario;
 
 @RestController
 @RequestMapping("/login")
@@ -19,13 +21,16 @@ public class UsuarioController {
 
     @Autowired
     private AuthenticationManager manager;
+
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping
     public ResponseEntity efetuarLogin(@RequestBody @Valid DadosAutenticacaoDTO dadosAutenticacao){
         var token = new UsernamePasswordAuthenticationToken(dadosAutenticacao.login(),dadosAutenticacao.senha());
         var auth =  manager.authenticate(token);
 
-
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(tokenService.gerarToken((Usuario) auth.getPrincipal()));
 
     }
 
