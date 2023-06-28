@@ -35,7 +35,7 @@ public class UsuarioController {
         var tokenJWT = tokenService.gerarToken((Usuario) auth.getPrincipal());
         DecodedJWT decodedJWT =  JWT.decode(tokenJWT);
 
-        return ResponseEntity.ok(new DadosTokenJWT(decodedJWT.getToken(),decodedJWT.getExpiresAtAsInstant()));
+        return ResponseEntity.ok(new DadosTokenJWT(tokenJWT,decodedJWT.getExpiresAtAsInstant()));
 
     }
 
