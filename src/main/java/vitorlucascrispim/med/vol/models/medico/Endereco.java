@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import vitorlucascrispim.med.vol.dtos.medico.AtualizaMedicoDTO;
 import vitorlucascrispim.med.vol.dtos.medico.EnderecoAtualizacaoDTO;
 import vitorlucascrispim.med.vol.dtos.medico.MedicoDTO;
+import vitorlucascrispim.med.vol.dtos.medico.PacienteDTO;
+import vitorlucascrispim.med.vol.models.paciente.Paciente;
 
 @Embeddable
 @Getter
@@ -31,6 +33,16 @@ public class Endereco {
         this.uf = medicoDTO.endereco().uf();
         this.complemento = medicoDTO.endereco().complemento();
         this.numero = medicoDTO.endereco().numero();
+    }
+
+    public Endereco(PacienteDTO pacienteDTO) {
+        this.logradouro = pacienteDTO.endereco().logradouro();
+        this.bairro = pacienteDTO.endereco().bairro();
+        this.cep = pacienteDTO.endereco().cep();
+        this.cidade = pacienteDTO.endereco().cidade();
+        this.uf = pacienteDTO.endereco().uf();
+        this.complemento = pacienteDTO.endereco().complemento();
+        this.numero = pacienteDTO.endereco().numero();
     }
 
     public Endereco(AtualizaMedicoDTO medicoDTO) {
